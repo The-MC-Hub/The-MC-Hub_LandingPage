@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { featuresData } from '../../data/featuresData';
+import { featuresData } from '../../../data/featuresData';
 import './Features.css';
 import { useTranslation } from 'react-i18next';
-import { getLocalizedValue } from '../../utils/localizationUtils';
+import { getLocalizedValue } from '../../../utils/localizationUtils';
 
 const containerVariants = {
   hidden: { opacity: 0 },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitch from '../common/LanguageSwitch';
+import LanguageSwitch from '../../common/LanguageSwitch';
 import './Navbar.css';
 
 const Navbar = () => {

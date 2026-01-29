@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { featuresData } from '../../data/featuresData';
+import { featuresData } from '../../../data/featuresData';
 import { Link } from 'react-router-dom';
-import './Features.css'; // Re-using features CSS
+import '../Features/Features.css'; // Re-using features CSS
 import { useTranslation } from 'react-i18next';
-import { getLocalizedValue } from '../../utils/localizationUtils';
+import { getLocalizedValue } from '../../../utils/localizationUtils';
 
 const FeaturesPreview = () => {
     const { t, i18n } = useTranslation();

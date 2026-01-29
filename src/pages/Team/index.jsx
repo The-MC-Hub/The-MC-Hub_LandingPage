@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { teamMembers } from '../data/teamData';
+import { teamMembers } from '../../data/teamData';
 import { FaLinkedinIn, FaGithub, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-import { getLocalizedValue } from '../utils/localizationUtils';
+import { getLocalizedValue } from '../../utils/localizationUtils';
 import './Team.css';
 
 const Team = () => {
