@@ -2,9 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { teamMembers } from '../data/teamData';
 import { FaLinkedinIn, FaGithub, FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import { getLocalizedValue } from '../utils/localizationUtils';
 import './Team.css';
 
 const Team = () => {
+    const { t, i18n } = useTranslation();
+    const lang = i18n.language;
+
     return (
         <section className="team-page">
             <div className="container">
@@ -14,8 +19,8 @@ const Team = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h1 className="text-gradient">Meet The Minds</h1>
-                    <p>The visionaries building the future of the MC industry.</p>
+                    <h1 className="text-gradient">{t('meet_the_minds')}</h1>
+                    <p>{t('team_subtitle')}</p>
                 </motion.div>
 
                 <div className="team-grid">
@@ -36,14 +41,16 @@ const Team = () => {
                                         {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>}
                                         {member.socials.github && <a href={member.socials.github} target="_blank" rel="noopener noreferrer"><FaGithub /></a>}
                                         {member.socials.facebook && <a href={member.socials.facebook} target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>}
+                                        {member.socials.twitter && <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer"><FaTwitter /></a>}
+                                        {member.socials.instagram && <a href={member.socials.instagram} target="_blank" rel="noopener noreferrer"><FaInstagram /></a>}
                                     </div>
                                 </div>
                             </div>
                             <div className="member-info">
                                 <h3 className="member-name">{member.name}</h3>
-                                <p className="member-role">{member.role}</p>
-                                <span className="member-specialty">{member.specialty}</span>
-                                <p className="member-bio">{member.bio}</p>
+                                <p className="member-role">{getLocalizedValue(member, 'role', lang)}</p>
+                                <span className="member-specialty">{getLocalizedValue(member, 'specialty', lang)}</span>
+                                <p className="member-bio">{getLocalizedValue(member, 'bio', lang)}</p>
                             </div>
                         </motion.div>
                     ))}

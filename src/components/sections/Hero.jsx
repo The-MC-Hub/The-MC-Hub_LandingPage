@@ -1,17 +1,17 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './Hero.css';
 
+
 const Hero = () => {
-  // Unsplash Image: Microphone on Stage
-  const heroBgImage = "https://images.unsplash.com/photo-1478737270239-2f02b77ac6d5?q=80&w=1920&auto=format&fit=crop";
+  const { t } = useTranslation();
+
 
   return (
     <section className="hero">
-      <div
-        className="hero-bg"
-        style={{ backgroundImage: `url(${heroBgImage})` }}
-      >
+      <div className="hero-bg">
         <div className="hero-overlay"></div>
       </div>
 
@@ -22,8 +22,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Elevate Your Voice <br />
-          <span className="text-gradient">Expand Your Career</span>
+          {t('hero_title_1')} <br />
+          <span className="text-gradient">{t('hero_title_2')}</span>
         </motion.h1>
 
         <motion.p
@@ -32,8 +32,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          The first AI-powered Booking & Career Development platform dedicated to MCs.
-          Connect, improve, and shine on every stage.
+          {t('hero_subtitle')}
         </motion.p>
 
         <motion.div
@@ -42,12 +41,12 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
         >
-          <button className="btn btn-primary" onClick={() => document.getElementById('subscribe').scrollIntoView({ behavior: 'smooth' })}>
-            Get Early Access
-          </button>
-          <a href="#features" className="learn-more">
-            Learn more ↓
-          </a>
+          <Link to="/coming-soon" className="btn btn-primary">
+            {t('get_early_access')}
+          </Link>
+          <Link to="/features" className="learn-more">
+            {t('learn_more')} ↓
+          </Link>
         </motion.div>
       </div>
     </section>

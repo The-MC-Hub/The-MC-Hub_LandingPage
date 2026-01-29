@@ -6,6 +6,8 @@ import Footer from './components/layout/Footer';
 // Lazy load Pages
 const Home = lazy(() => import('./pages/Home'));
 const Team = lazy(() => import('./pages/Team'));
+const ComingSoonPage = lazy(() => import('./pages/ComingSoonPage'));
+const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/coming-soon" element={<ComingSoonPage />} />
+            <Route path="/features" element={<FeaturesPage />} />
           </Routes>
         </Suspense>
         <Footer />
