@@ -25,7 +25,7 @@ const Navbar = () => {
           <Link to="/">{t('home')}</Link>
           <Link to="/features">{t('features')}</Link>
           <Link to="/team">{t('team')}</Link>
-          <Link to="/coming-soon" className="btn btn-primary">
+          <Link to="/coming-soon" className="btn btn-primary" style={{ color: 'black' }}>
             {t('join_waitlist')}
           </Link>
           <LanguageSwitch />
