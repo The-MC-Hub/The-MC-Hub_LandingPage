@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
 import './SubscriptionForm.css';
 
@@ -41,14 +42,16 @@ const SubscriptionForm = () => {
       });
   };
 
+  const { t } = useTranslation();
+
   return (
     <section id="subscribe" className="section subscribe-section">
       <div className="container subscribe-container">
         <div className="subscribe-content">
-          <h2>Join the Revolution</h2>
+          <h2>{t('join_revolution')}</h2>
           <p>
-            Be the first to know when we launch. <br />
-            Sign up now for early access and exclusive perks.
+            {t('be_first_know')} <br />
+            {t('sign_up_perks')}
           </p>
         </div>
 
@@ -57,7 +60,7 @@ const SubscriptionForm = () => {
             <input
               type="text"
               name="name"
-              placeholder="Your Name"
+              placeholder={t('your_name')}
               value={formData.name}
               onChange={handleChange}
               required
@@ -67,7 +70,7 @@ const SubscriptionForm = () => {
             <input
               type="email"
               name="email"
-              placeholder="Email Address"
+              placeholder={t('email_address')}
               value={formData.email}
               onChange={handleChange}
               required
@@ -75,15 +78,15 @@ const SubscriptionForm = () => {
           </div>
           <div className="form-group">
             <select name="role" value={formData.role} onChange={handleChange}>
-              <option value="MC">I am an MC</option>
-              <option value="Client">I hire MCs</option>
-              <option value="Partner">I am a Partner/Sponsor</option>
+              <option value="MC">{t('i_am_mc')}</option>
+              <option value="Client">{t('i_hire_mcs')}</option>
+              <option value="Partner">{t('i_am_partner')}</option>
             </select>
           </div>
           <div className="form-group">
             <textarea
               name="message"
-              placeholder="Anything you'd like to tell us? (Optional)"
+              placeholder={t('tell_us_optional')}
               value={formData.message}
               onChange={handleChange}
               rows="3"
@@ -91,12 +94,12 @@ const SubscriptionForm = () => {
           </div>
 
           <button type="submit" className="btn btn-primary btn-submit" disabled={status === 'sending'}>
-            {status === 'sending' ? 'Sending...' : 'Notify Me'}
+            {status === 'sending' ? t('sending') : t('notify_me')}
           </button>
 
-          {status === 'success' && <p className="status-msg success">Thank you! We'll be in touch.</p>}
-          {status === 'error' && <p className="status-msg error">Something went wrong. Please try again.</p>}
-          {status === 'error_config' && <p className="status-msg error">EmailJS not configured. Please check console.</p>}
+          {status === 'success' && <p className="status-msg success">{t('success_msg')}</p>}
+          {status === 'error' && <p className="status-msg error">{t('error_msg')}</p>}
+          {status === 'error_config' && <p className="status-msg error">EmailJS unconfigured</p>}
         </form>
       </div>
     </section>
