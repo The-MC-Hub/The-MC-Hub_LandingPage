@@ -9,22 +9,26 @@ const Team = lazy(() => import('./pages/Team'));
 const ComingSoonPage = lazy(() => import('./pages/ComingSoonPage'));
 const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
 
+import { ThemeProvider } from './context/ThemeContext';
+
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Suspense fallback={<div className="loading">Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/coming-soon" element={<ComingSoonPage />} />
-            <Route path="/features" element={<FeaturesPage />} />
-          </Routes>
-        </Suspense>
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Suspense fallback={<div className="loading">Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/coming-soon" element={<ComingSoonPage />} />
+              <Route path="/features" element={<FeaturesPage />} />
+            </Routes>
+          </Suspense>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitch from '../../common/LanguageSwitch';
+import ThemeSwitch from '../../common/ThemeSwitch';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -29,6 +30,7 @@ const Navbar = () => {
             {t('join_waitlist')}
           </Link>
           <LanguageSwitch />
+          <ThemeSwitch />
         </div>
       </div>
     </nav>

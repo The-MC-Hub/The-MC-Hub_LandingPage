@@ -1,0 +1,21 @@
+.theme-switch-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-switch-btn:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  color: var(--color-primary);
+}
+
+.theme-switch-btn svg {
+  display: block;
+}

@@ -1,7 +1,7 @@
 .footer {
-  background-color: #050505;
+  background-color: var(--color-footer-bg);
   padding: 2rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-surface-hover);
 }
 
 .footer-content {
@@ -14,9 +14,10 @@
   font-size: 1.25rem;
   margin-bottom: 0.25rem;
   color: var(--color-text);
-  background: linear-gradient(to right, var(--color-primary), #fff);
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .footer-left p {
