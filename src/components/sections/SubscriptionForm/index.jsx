@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import emailjs from 'emailjs-com';
 import './SubscriptionForm.css';
 
 const SubscriptionForm = () => {
@@ -10,36 +9,54 @@ const SubscriptionForm = () => {
     role: 'MC',
     message: ''
   });
+
   const [status, setStatus] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
 
-    // Environment variables
-    const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    try {
+      const response = await fetch(
+        'https://sheetdb.io/api/v1/wz2rtp798gsea',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            data: {
+              name: formData.name,
+              email: formData.email,
+              role: formData.role,
+              message: formData.message,
+              created_at: new Date().toLocaleString()
+            }
+          })
+        }
+      );
 
-    if (!serviceID || !templateID || !publicKey) {
-      console.error("EmailJS environment variables are missing.");
-      setStatus('error_config');
-      return;
-    }
+      const result = await response.json();
 
-    emailjs.send(serviceID, templateID, formData, publicKey)
-      .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
+      if (result.created) {
         setStatus('success');
-        setFormData({ name: '', email: '', role: 'MC', message: '' });
-      }, (err) => {
-        console.log('FAILED...', err);
+        setFormData({
+          name: '',
+          email: '',
+          role: 'MC',
+          message: ''
+        });
+      } else {
         setStatus('error');
-      });
+      }
+    } catch (error) {
+      console.error('SheetDB error:', error);
+      setStatus('error');
+    }
   };
 
   const { t } = useTranslation();
@@ -66,6 +83,7 @@ const SubscriptionForm = () => {
               required
             />
           </div>
+
           <div className="form-group">
             <input
               type="email"
@@ -76,6 +94,7 @@ const SubscriptionForm = () => {
               required
             />
           </div>
+
           <div className="form-group">
             <select name="role" value={formData.role} onChange={handleChange}>
               <option value="MC">{t('i_am_mc')}</option>
@@ -83,6 +102,7 @@ const SubscriptionForm = () => {
               <option value="Partner">{t('i_am_partner')}</option>
             </select>
           </div>
+
           <div className="form-group">
             <textarea
               name="message"
@@ -93,13 +113,20 @@ const SubscriptionForm = () => {
             ></textarea>
           </div>
 
-          <button type="submit" className="btn btn-primary btn-submit" disabled={status === 'sending'}>
+          <button
+            type="submit"
+            className="btn btn-primary btn-submit"
+            disabled={status === 'sending'}
+          >
             {status === 'sending' ? t('sending') : t('notify_me')}
           </button>
 
-          {status === 'success' && <p className="status-msg success">{t('success_msg')}</p>}
-          {status === 'error' && <p className="status-msg error">{t('error_msg')}</p>}
-          {status === 'error_config' && <p className="status-msg error">EmailJS unconfigured</p>}
+          {status === 'success' && (
+            <p className="status-msg success">Submitted successfully!</p>
+          )}
+          {status === 'error' && (
+            <p className="status-msg error">Submit failed. Try again.</p>
+          )}
         </form>
       </div>
     </section>

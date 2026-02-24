@@ -186,7 +186,7 @@ const Features = () => {
         </motion.div>
       </div>
     </section>
-  );c89cae4dc85b
+  );
 };
 
 export default Features;
