@@ -168,7 +168,7 @@ const Features = () => {
           )}
         </motion.div>
 
-        {/* Bridge / coming soon section */}
+        {/* coming soon */}
         <motion.div
           className="bridge-section"
           initial={{ opacity: 0, y: 30 }}

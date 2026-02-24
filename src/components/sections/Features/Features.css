@@ -186,7 +186,6 @@
   min-height: 320px;
 }
 
-/* Bridge section */
 
 .bridge-section {
   border-radius: var(--border-radius-lg, 24px);
@@ -225,7 +224,6 @@
   margin: 0 auto;
 }
 
-/* Response for smaller screens */
 @media (max-width: 900px) {
     .category-content-wrapper {
         grid-template-columns: 1fr;
