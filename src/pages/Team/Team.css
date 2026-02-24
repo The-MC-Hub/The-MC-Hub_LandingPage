@@ -12,6 +12,7 @@
 .team-header h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    
 }
 
 .team-header p {
@@ -129,4 +130,11 @@
     color: var(--color-text-muted);
     font-size: 0.9rem;
     line-height: 1.5;
+}
+
+.text-gradient {
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: #0891b2;
 }

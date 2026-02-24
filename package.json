@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "emailjs-com": "^3.2.0",
-    "framer-motion": "^12.29.2",
+    "framer-motion": "^12.34.3",
     "i18next": "^25.8.0",
     "i18next-browser-languagedetector": "^8.2.0",
     "react": "^19.2.0",
