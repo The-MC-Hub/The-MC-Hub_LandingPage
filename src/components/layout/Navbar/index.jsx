@@ -23,10 +23,10 @@ const Navbar = () => {
       <div className="container navbar-content">
         <Link to="/" className="logo">The MC Hub</Link>
         <div className="nav-links">
-          <Link to="/">{t('home')}</Link>
-          <Link to="/features">{t('features')}</Link>
-          <Link to="/team">{t('team')}</Link>
-          <Link to="/coming-soon" className="btn btn-primary" style={{ color: 'black' }}>
+          <Link to="/" className={location.pathname === '/' ? 'active' : ''}>{t('home')}</Link>
+          <Link to="/features" className={location.pathname === '/features' ? 'active' : ''}>{t('features')}</Link>
+          <Link to="/team" className={location.pathname === '/team' ? 'active' : ''}>{t('team')}</Link>
+          <Link to="/coming-soon" className={location.pathname === '/coming-soon' ? 'btn btn-primary active' : ''} style={location.pathname === '/coming-soon' ? { color: 'black' } : {}}>
             {t('join_waitlist')}
           </Link>
           <LanguageSwitch />
