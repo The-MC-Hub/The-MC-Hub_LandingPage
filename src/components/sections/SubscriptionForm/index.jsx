@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './SubscriptionForm.css';
 
@@ -11,6 +11,25 @@ const SubscriptionForm = () => {
   });
 
   const [status, setStatus] = useState('');
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    const fetchTotalUsers = async () => {
+      try {
+        const response = await fetch(
+          'https://sheetdb.io/api/v1/wz2rtp798gsea'
+        );
+        const data = await response.json();
+        setTotalUsers(data.length);
+      } catch (error) {
+        console.error('Error fetching total users:', error);
+      }
+    };
+
+    fetchTotalUsers();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,6 +63,9 @@ const SubscriptionForm = () => {
 
       if (result.created) {
         setStatus('success');
+
+        setTotalUsers((prev) => prev + 1);
+
         setFormData({
           name: '',
           email: '',
@@ -59,25 +81,26 @@ const SubscriptionForm = () => {
     }
   };
 
-  const { t } = useTranslation();
-
   return (
     <section id="subscribe" className="section subscribe-section">
       <div className="container subscribe-container">
         <div className="subscribe-content">
-          <h2>{t('join_revolution')}</h2>
-          <p>
-            {t('be_first_know')} <br />
-            {t('sign_up_perks')}
-          </p>
-        </div>
+  <h2>{t('join_revolution')}</h2>
 
+  <p>
+    {t('be_first_know')} <br />
+    {t('sign_up_perks')}
+  </p>
+  <p className="total-users">
+    Đã có <span className="gold-number">{totalUsers}</span> người đăng ký
+  </p>
+</div>
         <form className="subscribe-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <input
               type="text"
               name="name"
-              placeholder={t('your_name')}
+        placeholder={t('your_name')}
               value={formData.name}
               onChange={handleChange}
               required
