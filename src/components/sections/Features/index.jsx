@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import newbieImg from '../../assets/images/newbie.jpg';
-import proImg from '../../assets/images/pro.jpg';
+import newbieImg from '../../../assets/images/newbie.jpg';
+import proImg from '../../../assets/images/pro.jpg';
 import './Features.css';
 
 const containerVariants = {
