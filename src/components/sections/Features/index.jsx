@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import newbieImg from '../../assets/images/newbie.jpg';
+import proImg from '../../assets/images/pro.jpg';
 import './Features.css';
 
 const containerVariants = {
@@ -175,7 +177,7 @@ const Features = () => {
                 <div className="feat-image-glow" />
                 <div className="feat-image-wrapper">
                   <img
-                    src={isNewbie ? '/src/assets/images/newbie.jpg' : '/src/assets/images/pro.jpg'}
+                    src={isNewbie ? newbieImg : proImg}
                     alt={isNewbie ? t('feat_img_alt_newbie') : t('feat_img_alt_pro')}
                     className="feat-image"
                     loading="lazy"
