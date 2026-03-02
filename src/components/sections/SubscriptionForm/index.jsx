@@ -102,14 +102,12 @@ const SubscriptionForm = () => {
             </div>
           </div>
 
-          {/* Counter */}
           <div className="sub-counter">
             <span className="sub-counter-number gold-number">{totalUsers}</span>
             <span className="sub-counter-label">người đã đăng ký</span>
           </div>
         </motion.div>
 
-        {/* Right: form */}
         <motion.div
           className="sub-right"
           initial={{ opacity: 0, x: 32 }}
