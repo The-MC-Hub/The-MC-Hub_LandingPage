@@ -121,6 +121,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+    align-items: start;
+    /* let cards naturally sit at their offset position */
+    padding-bottom: 40px;
+    /* extra room for the downward-shifted cards */
 }
 
 /* ===== CARD ===== */
@@ -132,6 +136,24 @@
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Stagger: odd cards (1st, 3rd, 5th…) shift UP, even cards shift DOWN */
+.team-card:nth-child(odd) {
+    transform: translateY(-30px);
+}
+
+.team-card:nth-child(even) {
+    transform: translateY(30px);
+}
+
+/* Keep hover effect on top of the stagger offset */
+.team-card:nth-child(odd):hover {
+    transform: translateY(calc(-30px - 8px));
+}
+
+.team-card:nth-child(even):hover {
+    transform: translateY(calc(30px - 8px));
 }
 
 .team-card::before {
@@ -176,16 +198,21 @@
     backdrop-filter: blur(8px);
 }
 
-/* ===== IMAGE SECTION (original frame style) ===== */
+/* ===== IMAGE SECTION ===== */
 .member-image-wrapper {
     position: relative;
     overflow: hidden;
+    height: 340px;
+    /* fixed height → all images same size */
 }
 
 .member-image {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    /* fill the frame, crop if needed */
+    object-position: top;
+    /* keep faces visible */
     display: block;
     transition: transform 0.5s ease;
 }
@@ -339,6 +366,17 @@
 @media (max-width: 1024px) {
     .team-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Remove stagger on tablet — not enough horizontal room */
+    .team-card:nth-child(odd),
+    .team-card:nth-child(even) {
+        transform: translateY(0);
+    }
+
+    .team-card:nth-child(odd):hover,
+    .team-card:nth-child(even):hover {
+        transform: translateY(-8px);
     }
 
     .team-stats {

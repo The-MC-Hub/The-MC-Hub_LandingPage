@@ -70,7 +70,6 @@ const Team = () => {
                             key={member.id}
                             className="team-card"
                             variants={cardVariants}
-                            whileHover={{ y: -8, transition: { duration: 0.3 } }}
                         >
                             {/* Index badge */}
                             <span className="card-number">

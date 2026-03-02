@@ -29,7 +29,7 @@ const Hero = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <span className="hero-badge-dot" />
-          Nền tảng MC hàng đầu Việt Nam
+          {t('hero_badge')}
         </motion.div>
 
         {/* Title */}
