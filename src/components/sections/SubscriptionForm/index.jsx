@@ -104,7 +104,7 @@ const SubscriptionForm = () => {
 
           <div className="sub-counter">
             <span className="sub-counter-number gold-number">{totalUsers}</span>
-            <span className="sub-counter-label">người đã đăng ký</span>
+            <span className="sub-counter-label">{t('subscribers_label')}</span>
           </div>
         </motion.div>
 
@@ -141,7 +141,7 @@ const SubscriptionForm = () => {
             </div>
 
             <div className="sub-form-group">
-              <label className="sub-label">Vai trò</label>
+              <label className="sub-label">{t('role_label')}</label>
               <select name="role" value={formData.role} onChange={handleChange}>
                 <option value="MC">{t('i_am_mc') || 'I am an MC'}</option>
                 <option value="Client">{t('i_hire_mcs') || 'I hire MCs'}</option>

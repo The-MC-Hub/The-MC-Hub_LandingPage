@@ -95,7 +95,11 @@ const resources = {
       "feat_bridge_desc_post": " to reach thousands of clients.\"",
       "feat_stat_score": "AI score required",
       "feat_stat_clients": "Clients reached",
-      "feat_stat_opps": "Opportunities to shine"
+      "feat_stat_opps": "Opportunities to shine",
+
+      "hero_badge": "Vietnam's #1 MC Platform",
+      "subscribers_label": "registered users",
+      "role_label": "Role"
     }
   },
   vi: {
@@ -188,7 +192,11 @@ const resources = {
       "feat_bridge_desc_post": " tiếp cận hàng ngàn khách hàng.\"",
       "feat_stat_score": "Điểm AI cần đạt",
       "feat_stat_clients": "Khách hàng tiếp cận",
-      "feat_stat_opps": "Cơ hội tỏa sáng"
+      "feat_stat_opps": "Cơ hội tỏa sáng",
+
+      "hero_badge": "Nền tảng MC hàng đầu Việt Nam",
+      "subscribers_label": "người đã đăng ký",
+      "role_label": "Vai trò"
     }
   }
 };
