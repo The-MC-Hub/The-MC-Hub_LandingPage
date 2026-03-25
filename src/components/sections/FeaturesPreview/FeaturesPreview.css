@@ -1,0 +1,186 @@
+/* ===== FEATURES PREVIEW ===== */
+.features-preview-section {
+    padding: 6rem 0;
+    background: var(--color-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background accent */
+.features-preview-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-secondary), transparent);
+    opacity: 0.4;
+}
+
+/* ── Section header ── */
+.fp-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.fp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-secondary);
+    background: color-mix(in srgb, var(--color-secondary) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-secondary) 30%, transparent);
+    padding: 0.35rem 1rem;
+    border-radius: 50px;
+    margin-bottom: 1.25rem;
+}
+
+.fp-title {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+.fp-subtitle {
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ── Grid ── */
+.fp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+}
+
+/* ── Card ── */
+.fp-card {
+    position: relative;
+    background: var(--color-surface);
+    border-radius: 20px;
+    border: 1px solid color-mix(in srgb, var(--color-primary) 12%, transparent);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.fp-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 20px 50px color-mix(in srgb, var(--color-primary) 18%, transparent),
+        0 0 0 1px color-mix(in srgb, var(--color-primary) 40%, transparent);
+    border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+}
+
+/* Card number badge */
+.fp-card-number {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: color-mix(in srgb, var(--color-primary) 70%, transparent);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.55rem;
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+}
+
+/* Image container */
+.fp-image-container {
+    height: 210px;
+    overflow: hidden;
+    position: relative;
+}
+
+.fp-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.55s ease;
+    display: block;
+}
+
+.fp-card:hover .fp-image-container img {
+    transform: scale(1.06);
+}
+
+/* Image overlay gradient */
+.fp-image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 30%,
+            color-mix(in srgb, var(--color-surface) 80%, transparent) 100%);
+}
+
+/* Content area */
+.fp-content {
+    padding: 1.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.fp-content h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+    line-height: 1.3;
+}
+
+.fp-content p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.fp-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    align-self: flex-start;
+    transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.fp-link:hover {
+    gap: 0.6rem;
+    color: var(--color-primary);
+}
+
+/* ── Footer CTA ── */
+.fp-footer {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .features-preview-section {
+        padding: 4rem 0;
+    }
+
+    .fp-grid {
+        grid-template-columns: 1fr;
+    }
+}

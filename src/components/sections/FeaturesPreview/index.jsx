@@ -2,93 +2,91 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { featuresData } from '../../../data/featuresData';
 import { Link } from 'react-router-dom';
-import '../Features/Features.css'; // Re-using features CSS
 import { useTranslation } from 'react-i18next';
 import { getLocalizedValue } from '../../../utils/localizationUtils';
+import './FeaturesPreview.css';
+
+const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.12 } }
+};
+
+const cardVariants = {
+    hidden: { opacity: 0, y: 36 },
+    visible: {
+        opacity: 1, y: 0,
+        transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] }
+    }
+};
 
 const FeaturesPreview = () => {
     const { t, i18n } = useTranslation();
     const lang = i18n.language;
 
     return (
-        <section id="features-preview" className="section features-section">
+        <section id="features-preview" className="features-preview-section">
             <div className="container">
-                <div className="text-center" style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <motion.h2
-                        className="section-title"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
+                {/* Header */}
+                <motion.div
+                    className="fp-header"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                >
+                    <h2 className="fp-title">
                         {t('why_choose')} <span className="text-gradient">The MC Hub</span>?
-                    </motion.h2>
-                    <motion.p
-                        className="section-subtitle"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                    >
-                        {t('features_preview_subtitle')}
-                    </motion.p>
-                </div>
+                    </h2>
+                    <p className="fp-subtitle">{t('features_preview_subtitle')}</p>
+                </motion.div>
 
-                <div className="features-preview-grid" style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                    gap: '2rem'
-                }}>
+                {/* Grid */}
+                <motion.div
+                    className="fp-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: '-60px' }}
+                >
                     {featuresData.map((category, idx) => (
                         <motion.div
                             key={idx}
-                            className="feature-preview-card"
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            style={{
-                                background: 'var(--color-surface)',
-                                borderRadius: 'var(--border-radius)',
-                                overflow: 'hidden',
-                                border: '1px solid rgba(255,255,255,0.05)',
-                                display: 'flex',
-                                flexDirection: 'column'
-                            }}
+                            className="fp-card"
+                            variants={cardVariants}
+                            whileHover={{ y: -8, transition: { duration: 0.3 } }}
                         >
-                            <div
-                                className="preview-image-container"
-                                style={{
-                                    height: '200px',
-                                    overflow: 'hidden',
-                                    position: 'relative'
-                                }}
-                            >
+                            {/* Number badge */}
+                            <span className="fp-card-number">
+                                {String(idx + 1).padStart(2, '0')}
+                            </span>
+
+                            {/* Image */}
+                            <div className="fp-image-container">
                                 <img
                                     src={category.image}
-                                    alt={category.title}
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s ease' }}
+                                    alt={getLocalizedValue(category, 'title', lang)}
+                                    loading="lazy"
                                 />
-                                <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to bottom, transparent, rgba(0,0,0,0.8))' }}></div>
+                                <div className="fp-image-overlay" />
                             </div>
 
-                            <div className="preview-content" style={{ padding: '2rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                                <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>
-                                    {getLocalizedValue(category, 'title', lang)}
-                                </h3>
-                                <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem', flex: 1 }}>
-                                    {getLocalizedValue(category, 'description', lang)}
-                                </p>
-
-                                <Link to="/features" className="btn-text" style={{ alignSelf: 'flex-start', color: 'var(--color-secondary)' }}>
-                                    {t('explore_features')} &rarr;
+                            {/* Content */}
+                            <div className="fp-content">
+                                <h3>{getLocalizedValue(category, 'title', lang)}</h3>
+                                <p>{getLocalizedValue(category, 'description', lang)}</p>
+                                <Link to="/features" className="fp-link">
+                                    {t('explore_features')} →
                                 </Link>
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
-                <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-                    <Link to="/features" className="btn btn-primary">{t('view_all_features')}</Link>
+                {/* Footer CTA */}
+                <div className="fp-footer">
+                    <Link to="/features" className="btn btn-primary">
+                        {t('view_all_features')}
+                    </Link>
                 </div>
             </div>
         </section>
