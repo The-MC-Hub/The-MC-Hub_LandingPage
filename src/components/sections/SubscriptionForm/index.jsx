@@ -18,7 +18,7 @@ const SubscriptionForm = () => {
   useEffect(() => {
     const fetchTotalUsers = async () => {
       try {
-        const response = await fetch('https://sheetdb.io/api/v1/wz2rtp798gsea');
+        const response = await fetch('https://sheetdb.io/api/v1/h1htmb6q39aku');
         const data = await response.json();
         setTotalUsers(data.length);
       } catch (error) {
@@ -36,7 +36,7 @@ const SubscriptionForm = () => {
     e.preventDefault();
     setStatus('sending');
     try {
-      const response = await fetch('https://sheetdb.io/api/v1/wz2rtp798gsea', {
+      const response = await fetch('https://sheetdb.io/api/v1/h1htmb6q39aku', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
