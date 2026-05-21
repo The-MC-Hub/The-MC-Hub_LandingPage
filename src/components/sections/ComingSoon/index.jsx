@@ -5,8 +5,8 @@ import './ComingSoon.css';
 
 const ComingSoon = () => {
     const { t } = useTranslation();
-    const formUrl = import.meta.env.VITE_GOOGLE_FORM_URL;
-
+const formUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSc1NTZ6SAuOdbWtL5B9fwLdFGmrogS9V9LktK4VaDSKiVvyWQ/viewform?embedded=true";
     return (
         <section className="coming-soon-section" id="coming-soon">
             <div className="container">
